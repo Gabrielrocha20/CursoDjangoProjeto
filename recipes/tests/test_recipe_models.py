@@ -16,7 +16,7 @@ class RecipeModelTest(RecipeTestBase):
             author=self.make_author(username='Test author '),
             title='Recipe Title',
             description='Recipe Description',
-            slug='recipe-slug',
+            slug='recipe-slug-for-no-default',
             preparation_time=10,
             preparation_time_unit='minutos',
             servings=5,
@@ -48,3 +48,10 @@ class RecipeModelTest(RecipeTestBase):
         recipe = self.make_recipe_no_defaults()
 
         self.assertFalse(recipe.is_published)
+
+    def test_recipe_string_representation(self):
+        needed = 'Testing Representation'
+        self.recipe.title = needed
+        self.recipe.full_clean()
+        self.recipe.save()
+        self.assertEqual(str(self.recipe), needed)
