@@ -5,17 +5,7 @@
 {% block content %}
   <div class="main-content center container">
     <h2>Login</h2>
-    {% if  request.user.is_authenticated %}
-        <div>
-            Your are logged with
-            {{ request.user.username }}
-            <form class="inline-form" action="{% url 'authors:logout' %}" method="POST">
-                {% csrf_token %}
-                <input type="hidden" name="username" name="{{ request.user.username }}">
-                <button class="plaintext-button" type="submit">Click here</button> 
-            </form > to logout
-        </div>
-    {% endif %}
+    {% include 'authors/partials/login_messages.html' %}
   </div>
 
   {% include 'global/partials/messages.html' %}

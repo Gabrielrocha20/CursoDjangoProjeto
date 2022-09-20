@@ -14,6 +14,8 @@ urlpatterns = [
     path('login/', views.login_view, name='login'),
     path('login/create/', views.login_create, name='login_create'),
     path('logout', views.logout_view, name='logout'),
+    path('dashboard/', views.dashboard_recipe.DashboardRecipe.as_view(),
+         name='dashboard')
 ]
 
 urlpatterns += author_api_router.urls
